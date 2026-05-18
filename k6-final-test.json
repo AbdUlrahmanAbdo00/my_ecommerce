@@ -1,0 +1,210 @@
+{
+    "metrics": {
+        "http_req_duration": {
+            "avg": 12600.173208358836,
+            "min": 484.638,
+            "med": 11334.4188,
+            "max": 35293.8896,
+            "p(90)": 19301.3542,
+            "p(95)": 20757.1284,
+            "thresholds": {
+                "p(95)<1500": true
+            }
+        },
+        "data_received": {
+            "rate": 26346.872020331357,
+            "count": 1854721
+        },
+        "iteration_duration": {
+            "avg": 12743.819756179753,
+            "min": 1583.0085,
+            "med": 11442.1492,
+            "max": 35382.6275,
+            "p(90)": 19589.72636,
+            "p(95)": 20775.550139999996
+        },
+        "http_req_duration{expected_response:true}": {
+            "avg": 12708.408888668868,
+            "min": 484.638,
+            "med": 11434.527,
+            "max": 35293.8896,
+            "p(90)": 19490.902780000004,
+            "p(95)": 20887.705679999995
+        },
+        "vus": {
+            "value": 15,
+            "min": 0,
+            "max": 230
+        },
+        "http_req_duration{area:checkout}": {
+            "avg": 13499.913156934303,
+            "min": 3027.8738,
+            "med": 11864.9093,
+            "max": 35293.8896,
+            "p(90)": 21943.12062,
+            "p(95)": 22984.151159999998,
+            "thresholds": {
+                "p(95)<1500": true
+            }
+        },
+        "iterations": {
+            "count": 979,
+            "rate": 13.906990705289042
+        },
+        "http_req_duration{area:products}": {
+            "avg": 12291.964615817698,
+            "min": 1581.7339,
+            "med": 11066.8488,
+            "max": 29655.6037,
+            "p(90)": 18091.002260000005,
+            "p(95)": 20000.793479999997,
+            "thresholds": {
+                "p(95)<1200": true
+            }
+        },
+        "http_req_failed": {
+            "passes": 72,
+            "fails": 909,
+            "thresholds": {
+                "rate<0.10": false
+            },
+            "value": 0.07339449541284404
+        },
+        "data_sent": {
+            "count": 254096,
+            "rate": 3609.5104292657043
+        },
+        "http_req_sending": {
+            "med": 0,
+            "max": 4948.6198,
+            "p(90)": 2.4442,
+            "p(95)": 20.1826,
+            "avg": 16.49981865443426,
+            "min": 0
+        },
+        "dropped_iterations": {
+            "count": 6646,
+            "rate": 94.40843741302449
+        },
+        "vus_max": {
+            "min": 50,
+            "max": 230,
+            "value": 230
+        },
+        "http_req_duration{area:auth}": {
+            "p(90)": 18864.8144,
+            "p(95)": 20018.2032,
+            "avg": 12480.380080497922,
+            "min": 3424.5771,
+            "med": 11573.2827,
+            "max": 22584.3091,
+            "thresholds": {
+                "p(95)<1000": true
+            }
+        },
+        "http_req_duration{area:cart}": {
+            "min": 2311.0608,
+            "med": 11569.20305,
+            "max": 24736.5391,
+            "p(90)": 19608.610070000002,
+            "p(95)": 20496.410685,
+            "avg": 12794.94492807018,
+            "thresholds": {
+                "p(95)<1200": true
+            }
+        },
+        "http_req_connecting": {
+            "avg": 28.63570295616716,
+            "min": 0,
+            "med": 2.0179,
+            "max": 5634.3452,
+            "p(90)": 39.1087,
+            "p(95)": 85.9014
+        },
+        "http_req_receiving": {
+            "p(90)": 188.7574,
+            "p(95)": 905.2512,
+            "avg": 146.31100733944936,
+            "min": 0,
+            "med": 3.8358,
+            "max": 6785.8721
+        },
+        "checks": {
+            "passes": 979,
+            "fails": 0,
+            "value": 1
+        },
+        "http_req_tls_handshaking": {
+            "avg": 0,
+            "min": 0,
+            "med": 0,
+            "max": 0,
+            "p(90)": 0,
+            "p(95)": 0
+        },
+        "http_req_waiting": {
+            "min": 477.2565,
+            "med": 11275.1658,
+            "max": 35240.5666,
+            "p(90)": 19003.1437,
+            "p(95)": 20518.4948,
+            "avg": 12437.362382364934
+        },
+        "http_reqs": {
+            "count": 981,
+            "rate": 13.935401309385648
+        },
+        "http_req_blocked": {
+            "avg": 49.49093924566775,
+            "min": 0,
+            "med": 2.2232,
+            "max": 5634.3452,
+            "p(90)": 66.8736,
+            "p(95)": 120.2644
+        }
+    },
+    "setup_data": {
+        "password": "password123",
+        "productId": 1,
+        "quantity": 1,
+        "token": "667|FfioAzj3wXg9Xfyiv7Ox1QcicjTsCwBXI10gfmd9d2c5428f",
+        "baseUrl": "http://my-ecommerce-app.test",
+        "email": "user1@test.com"
+    },
+    "root_group": {
+        "path": "",
+        "id": "d41d8cd98f00b204e9800998ecf8427e",
+        "groups": {},
+        "checks": {
+                "products endpoint responded": {
+                    "id": "553e988f937e0e4e0f75360cb9eb1e5a",
+                    "passes": 373,
+                    "fails": 0,
+                    "name": "products endpoint responded",
+                    "path": "::products endpoint responded"
+                },
+                "cart endpoint responded": {
+                    "passes": 228,
+                    "fails": 0,
+                    "name": "cart endpoint responded",
+                    "path": "::cart endpoint responded",
+                    "id": "9600552203d7702aec6a142067cf7e03"
+                },
+                "checkout endpoint responded": {
+                    "fails": 0,
+                    "name": "checkout endpoint responded",
+                    "path": "::checkout endpoint responded",
+                    "id": "4112d3347b21043f94ee92006a4f5747",
+                    "passes": 137
+                },
+                "login endpoint responded": {
+                    "fails": 0,
+                    "name": "login endpoint responded",
+                    "path": "::login endpoint responded",
+                    "id": "a9de13a5350518a46d2a3029df519880",
+                    "passes": 241
+                }
+            },
+        "name": ""
+    }
+}

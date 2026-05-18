@@ -15,6 +15,9 @@ class GenerateOrderSummaryJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
+    public string $connection = 'database';
+    public string $queue = 'orders';
+
     /**
      * The number of times the job may be attempted.
      */

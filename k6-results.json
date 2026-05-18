@@ -1,0 +1,218 @@
+{
+    "root_group": {
+        "path": "",
+        "id": "d41d8cd98f00b204e9800998ecf8427e",
+        "groups": {},
+        "checks": {
+                "products endpoint responded": {
+                    "path": "::products endpoint responded",
+                    "id": "553e988f937e0e4e0f75360cb9eb1e5a",
+                    "passes": 301,
+                    "fails": 0,
+                    "name": "products endpoint responded"
+                },
+                "checkout endpoint responded": {
+                    "passes": 61,
+                    "fails": 0,
+                    "name": "checkout endpoint responded",
+                    "path": "::checkout endpoint responded",
+                    "id": "4112d3347b21043f94ee92006a4f5747"
+                },
+                "cart endpoint responded": {
+                    "id": "9600552203d7702aec6a142067cf7e03",
+                    "passes": 120,
+                    "fails": 0,
+                    "name": "cart endpoint responded",
+                    "path": "::cart endpoint responded"
+                },
+                "login endpoint responded": {
+                    "name": "login endpoint responded",
+                    "path": "::login endpoint responded",
+                    "id": "a9de13a5350518a46d2a3029df519880",
+                    "passes": 61,
+                    "fails": 0
+                }
+            },
+        "name": ""
+    },
+    "metrics": {
+        "http_req_duration{area:auth}": {
+            "avg": 467.87001311475416,
+            "min": 219.6592,
+            "med": 319.245,
+            "max": 1069.3231,
+            "p(90)": 804.49,
+            "p(95)": 851.5111,
+            "thresholds": {
+                "p(95)<1000": false
+            }
+        },
+        "http_req_tls_handshaking": {
+            "med": 0,
+            "max": 0,
+            "p(90)": 0,
+            "p(95)": 0,
+            "avg": 0,
+            "min": 0
+        },
+        "http_req_failed": {
+            "fails": 100,
+            "passes": 445,
+            "thresholds": {
+                "rate<0.10": true
+            },
+            "value": 0.8165137614678899
+        },
+        "http_req_duration{area:cart}": {
+            "avg": 339.3640208333333,
+            "min": 226.3205,
+            "med": 340.1941,
+            "max": 554.5364,
+            "p(90)": 408.70352,
+            "p(95)": 431.445415,
+            "thresholds": {
+                "p(95)<1200": false
+            }
+        },
+        "vus": {
+            "max": 4,
+            "value": 1,
+            "min": 0
+        },
+        "vus_max": {
+            "max": 50,
+            "value": 50,
+            "min": 50
+        },
+        "http_req_sending": {
+            "avg": 0.14414146788990834,
+            "min": 0,
+            "med": 0,
+            "max": 2.0276,
+            "p(90)": 0.6052000000000001,
+            "p(95)": 0.6426
+        },
+        "http_req_duration": {
+            "avg": 349.0977297247705,
+            "min": 219.6592,
+            "med": 331.0684,
+            "max": 1069.3231,
+            "p(90)": 414.40130000000005,
+            "p(95)": 488.0117799999995,
+            "thresholds": {
+                "p(95)<1500": false
+            }
+        },
+        "cart_429": {
+            "count": 97,
+            "rate": 1.5819656567487614
+        },
+        "data_sent": {
+            "count": 141028,
+            "rate": 2300.014975669735
+        },
+        "login_429": {
+            "count": 40,
+            "rate": 0.6523569718551593
+        },
+        "checkout_429": {
+            "count": 46,
+            "rate": 0.7502105176334332
+        },
+        "http_req_connecting": {
+            "max": 15.7216,
+            "p(90)": 2.4104600000000005,
+            "p(95)": 2.7779,
+            "avg": 1.5037291743119248,
+            "min": 0,
+            "med": 1.2673
+        },
+        "http_req_receiving": {
+            "p(90)": 7.6574,
+            "p(95)": 8.480559999999997,
+            "avg": 4.884985504587158,
+            "min": 0,
+            "med": 4.5889,
+            "max": 15.0641
+        },
+        "iterations": {
+            "count": 543,
+            "rate": 8.855745892933788
+        },
+        "http_req_blocked": {
+            "avg": 1.6361675229357786,
+            "min": 0,
+            "med": 1.4881,
+            "max": 15.7216,
+            "p(90)": 2.54684,
+            "p(95)": 3.090239999999999
+        },
+        "http_req_duration{expected_response:true}": {
+            "avg": 449.136481,
+            "min": 246.4418,
+            "med": 376.61635,
+            "max": 1069.3231,
+            "p(90)": 792.31023,
+            "p(95)": 814.765935
+        },
+        "http_req_duration{area:products}": {
+            "avg": 323.6906279069771,
+            "min": 224.5066,
+            "med": 320.8392,
+            "max": 509.9054,
+            "p(90)": 399.5771,
+            "p(95)": 413.169,
+            "thresholds": {
+                "p(95)<1200": false
+            }
+        },
+        "checks": {
+            "passes": 543,
+            "fails": 0,
+            "value": 1
+        },
+        "http_req_duration{area:checkout}": {
+            "avg": 370.2471393442624,
+            "min": 257.7808,
+            "med": 362.1181,
+            "max": 604.7454,
+            "p(90)": 444.8778,
+            "p(95)": 478.9253,
+            "thresholds": {
+                "p(95)<1500": false
+            }
+        },
+        "http_reqs": {
+            "count": 545,
+            "rate": 8.888363741526545
+        },
+        "data_received": {
+            "count": 4915191,
+            "rate": 80161.4779212433
+        },
+        "http_req_waiting": {
+            "avg": 344.06860275229303,
+            "min": 212.8664,
+            "med": 327.1485,
+            "max": 1063.588,
+            "p(90)": 412.21624,
+            "p(95)": 484.8028199999992
+        },
+        "iteration_duration": {
+            "avg": 350.39565727440106,
+            "min": 220.821,
+            "med": 334.8685,
+            "max": 1070.4775,
+            "p(90)": 414.98812,
+            "p(95)": 480.2447699999999
+        }
+    },
+    "setup_data": {
+        "baseUrl": "http://my-ecommerce-app.test",
+        "email": "user1@test.com",
+        "password": "password123",
+        "productId": 1,
+        "quantity": 1,
+        "token": "584|Fjqt7xEdTAdbkqOqI0lonNclJi1sSsVcjbdbVA1jf6570c96"
+    }
+}
