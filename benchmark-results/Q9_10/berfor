@@ -1,0 +1,125 @@
+S C:\xampp\htdocs\my-ecommerce-app> k6 run --env BASE_URL=http://localhost:8000 scripts/k6_stress_test.js
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: scripts/k6_stress_test.js
+        output: -
+
+     scenarios: (100.00%) 1 scenario, 100 max VUs, 1m45s max duration (incl. graceful stop):
+              * stress: Up to 100 looping VUs for 1m30s over 3 stages (gracefulRampDown: 15s, gracefulStop: 30s)
+
+INFO[0000] 
+=== STRESS TEST — Req 9 — target 100 VUs against http://localhost:8000 ===  source=console
+INFO[0000] Users: 100 | Products: 260 (abundant:200 scarce:50 hot:10)  source=console
+INFO[0000] VUs log in lazily on their first iteration.   source=console
+
+================ STRESS TEST SUMMARY (Req 9) ================
+Max VUs            : 100
+Iterations         : 156
+Total responses    : 789  (2xx 616 | 429 0 | 503 0 | 422 7 | 5xx 166)
+Checkout retried   : 0  (503 → waited 200ms → retried)
+Success rate       : 78.07%
+
+--- API LATENCY (p95 / avg) ---
+  GET  /api/products  : p95 11282.98ms   avg 9313.32ms
+  POST /api/cart/add  : p95 11476.53ms   avg 9536.11ms
+  POST /api/checkout  : p95 11055.9ms   avg 8999.7ms  (in-PHP p95 3394.86ms)
+  GET  /api/orders    : p95 21373.69ms   avg 9592.63ms
+NO CRASH           : NO ✗
+
+--- CHECKOUT STAGE BREAKDOWN (ranked by avg; % of in-PHP work) ---
+  cart_load_ms           avg        0ms  p95        0ms    0.0%
+  lock_ms                avg        0ms  p95        0ms    0.0%
+  decrement_ms           avg        0ms  p95        0ms    0.0%
+  order_create_ms        avg        0ms  p95        0ms    0.0%
+  items_create_ms        avg        0ms  p95        0ms    0.0%
+  cart_delete_ms         avg        0ms  p95        0ms    0.0%
+  commit_overhead_ms     avg        0ms  p95        0ms    0.0%
+  cache_forget_ms        avg        0ms  p95        0ms    0.0%
+  dispatch_ms            avg        0ms  p95        0ms    0.0%
+  dispatch2_ms           avg        0ms  p95        0ms    0.0%
+  order_load_ms          avg        0ms  p95        0ms    0.0%
+  log_ms                 avg        0ms  p95        0ms    0.0%
+
+DB queries/checkout : avg 6.14  | total SQL avg 147.4ms p95 247.77ms | slowest avg 83.51ms
+=============================================================
+
+running (1m42.2s), 000/100 VUs, 156 complete and 23 interrupted iterations
+stress ✓ [======================================] 000/100 VUs  1m30s
+ERRO[0103] thresholds on metrics 'resp_server_errors' have been crossed 
+PS C:\xampp\htdocs\my-ecommerce-app> 
+..................................................................
+PS C:\xampp\htdocs\my-ecommerce-app> powershell -File scripts\monitor.ps1 before
+
+Project monitor started  â†’  C:\xampp\htdocs\my-ecommerce-app\storage\app\benchmark\before-monitor.csv
+Tracking: mysqld + php + httpd  (interval: 2s)
+Stop: create C:\xampp\htdocs\my-ecommerce-app\storage\app\benchmark\.stop  OR  Ctrl+C
+
+Time               CPU%          RAM
+------------------------------------
+16:28:22            0%        66MB
+16:28:24            0%        66MB
+16:28:26          0.1%        66MB
+16:28:28            0%        66MB
+16:28:30            1%        84MB
+16:28:32         26.7%       271MB
+16:28:34         30.5%       429MB
+16:28:36         31.4%       536MB
+16:28:39         29.6%       688MB
+16:28:41         29.7%       851MB
+16:28:43         30.2%       970MB
+16:28:45         30.9%      1096MB
+16:28:47         30.2%      1172MB
+16:28:49         31.5%      1247MB
+16:28:51         30.9%      1301MB
+16:28:53         31.6%      1355MB
+16:28:55         32.1%      1472MB
+16:28:57         32.3%      1544MB
+16:29:00         30.1%      1616MB
+16:29:02         31.1%      1700MB
+16:29:04         31.7%      1770MB
+16:29:06         30.8%      1815MB
+16:29:08         30.9%      1874MB
+16:29:10         31.4%      1937MB
+16:29:12         31.3%      1983MB
+16:29:14         31.1%      2020MB
+16:29:16         30.9%      2031MB
+16:29:18         32.4%      2034MB
+16:29:21         31.2%      2031MB
+16:29:23         32.5%      2027MB
+16:29:25         30.5%      1898MB
+16:29:27         31.4%      1971MB
+16:29:29         31.1%      2010MB
+16:29:31         31.6%      2047MB
+16:29:33         31.2%      2042MB
+16:29:35         29.7%      2065MB
+16:29:38         31.5%      2075MB
+16:29:40         31.7%      2072MB
+16:29:42         32.2%      2071MB
+16:29:44         31.3%      2063MB
+16:29:46         31.4%      2064MB
+16:29:48         31.3%      2066MB
+16:29:50         31.5%      2074MB
+16:29:52         31.7%      2082MB
+16:29:55         31.7%      2091MB
+16:29:57         31.2%      2094MB
+16:29:59         31.2%      2089MB
+16:30:01         31.8%      2086MB
+16:30:03         30.8%      2084MB
+16:30:05         32.2%      2091MB
+16:30:07         31.7%      2095MB
+16:30:09         30.7%      2111MB
+16:30:11         30.6%      2115MB
+16:30:13          2.9%      2034MB
+16:30:15            0%      2034MB
+16:30:17            0%      2034MB
+16:30:20            0%      2034MB
+
+Monitor stopped. Results saved to: C:\xampp\htdocs\my-ecommerce-app\storage\app\benchmark\before-monitor.csv
+PS C:\xampp\htdocs\my-ecommerce-app>

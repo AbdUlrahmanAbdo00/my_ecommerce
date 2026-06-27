@@ -1,0 +1,116 @@
+
+PS C:\xampp\htdocs\my-ecommerce-app> k6 run --env BASE_URL=http://localhost:8000 scripts/k6_stress_test.js
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: scripts/k6_stress_test.js
+        output: -
+
+     scenarios: (100.00%) 1 scenario, 100 max VUs, 1m45s max duration (incl. graceful stop):
+              * stress: Up to 100 looping VUs for 1m30s over 3 stages (gracefulRampDown: 15s, gracefulStop: 30s)
+
+INFO[0000] 
+=== STRESS TEST — Req 9 — target 100 VUs against http://localhost:8000 ===  source=console
+INFO[0000] Users: 100 | Products: 260 (abundant:200 scarce:50 hot:10)  source=console
+INFO[0000] VUs log in lazily on their first iteration.   source=console
+
+================ STRESS TEST SUMMARY (Req 9) ================
+Max VUs            : 100
+Iterations         : 4555
+Total responses    : 18320  (2xx 14465 | 429 0 | 503 0 | 422 3855 | 5xx 0)
+Success rate       : 78.96%
+NO CRASH           : YES ✓
+
+--- ORDER INTEGRITY PROOF ---
+Orders created (k6 201): 700
+Failed - out of stock  : 3855  → no order created (DB rolled back)
+Failed - lock timeout  : 0  → no order created (transaction never started)
+Verify in DB           : SELECT COUNT(*) FROM orders;  → must equal 700
+
+--- API LATENCY (avg / p95 / max) ---
+  GET  /api/products         avg  219.89ms  p95  370.37ms  max  523.43ms
+  POST /api/cart/add         avg  263.42ms  p95  426.64ms  max  753.47ms
+  POST /api/checkout         avg  428.11ms  p95  844.06ms  max 2323.88ms
+    └─ in-PHP only           avg  408.93ms  p95  822.55ms  max  2296.2ms
+  GET  /api/orders           avg  228.23ms  p95  371.18ms  max  596.57ms
+
+--- CHECKOUT STAGE BREAKDOWN (ranked by avg; % of in-PHP work) ---
+  cart_load_ms           avg    18.74ms  p95    54.39ms    4.6%
+  order_load_ms          avg    17.04ms  p95    49.52ms    4.2%
+  commit_overhead_ms     avg    10.41ms  p95     35.9ms    2.5%
+  decrement_ms           avg     9.37ms  p95    33.75ms    2.3%
+  items_create_ms        avg     8.02ms  p95    30.34ms    2.0%
+  cart_delete_ms         avg     7.63ms  p95    28.51ms    1.9%
+  dispatch_ms            avg     7.38ms  p95    21.73ms    1.8%
+  order_create_ms        avg     7.24ms  p95    26.51ms    1.8%
+  dispatch2_ms           avg     0.73ms  p95      1.3ms    0.2%
+  lock_ms                avg     0.25ms  p95     0.35ms    0.1%
+  cache_forget_ms        avg     0.11ms  p95     0.16ms    0.0%
+  log_ms                 avg        0ms  p95        0ms    0.0%
+
+DB queries/checkout : avg 20.96  | total SQL avg 372.35ms p95 777.26ms | slowest avg 153.36ms
+=============================================================
+
+running (1m30.3s), 000/100 VUs, 4555 complete and 0 interrupted iterations
+stress ✓ [======================================] 000/100 VUs  1m30s
+PS C:\xampp\htdocs\my-ecommerce-app> 
+Stop: create C:\xampp\htdocs\my-ecommerce-app\storage\app\benchmark\.stop  OR  Ctrl+C
+
+Time               CPU%          RAM
+------------------------------------
+02:37:56          0.1%       103MB
+02:37:58            0%       103MB
+02:38:00            0%       103MB
+02:38:02            0%       104MB
+02:38:04            0%       104MB
+02:38:06         19.7%       104MB
+02:38:08         31.5%       142MB
+02:38:10         51.8%       178MB
+02:38:13         71.4%       224MB
+02:38:15           66%       249MB
+02:38:17         78.7%       290MB
+02:38:19         78.4%       328MB
+02:38:21         81.5%       365MB
+02:38:23         80.1%       403MB
+02:38:25         76.3%       423MB
+02:38:28         75.6%       425MB
+02:38:30         77.5%       425MB
+02:38:32         79.2%       427MB
+02:38:34         75.4%       426MB
+02:38:37         74.8%       428MB
+02:38:39         73.5%       428MB
+02:38:41         81.8%       429MB
+02:38:45         76.4%       431MB
+02:38:47         79.7%       430MB
+02:38:49         76.6%       431MB
+02:38:52         79.3%       432MB
+02:38:54         67.4%       432MB
+02:38:56         72.8%       433MB
+02:38:59           79%       430MB
+02:39:01         75.7%       433MB
+02:39:03         79.1%       432MB
+02:39:05         75.2%       434MB
+02:39:07         75.9%       434MB
+02:39:09         78.3%       435MB
+02:39:12           77%       435MB
+02:39:14         76.4%       435MB
+02:39:16         75.8%       436MB
+02:39:18           76%       434MB
+02:39:20         77.6%       435MB
+02:39:23         73.7%       437MB
+02:39:25         76.7%       437MB
+02:39:27           77%       436MB
+02:39:29         72.1%       434MB
+02:39:31           72%       434MB
+02:39:33         43.6%       416MB
+02:39:36          3.6%       407MB
+02:39:38          0.1%       408MB
+02:39:40            0%       408MB
+02:39:42            0%       408MB
+PS C:\xampp\htdocs\my-ecommerce-app> 
